@@ -1,47 +1,43 @@
-import random
-class red_question:
-  def __init__ (self, questions, answer, choices):
-    self.questions = questions
-    self.answer = answer
-    self.choices = choices
+player = input("What is your name?")
+print(f"Hello, {player} welcome to the American History trivia game, Our America!")
 
-class green_question:
-  def __init__ (self, questions, answer, choices):
-    self.questions = questions
-    self.answer = answer
-    self.choices = choices
+score = 0
 
-class blue_question:
-  def __init__ (self, questions, answer, choices):
-    self.questions = questions
-    self.answer = answer
-    self.choices = choices
+class Question:
 
-class purple_question:
-  def __init__ (self, questions, answer, choices):
-    self.questions = questions
-    self.answer = answer
-    self.choices = choices
+    def __init__(self, question, answer, choices):
+        self.question = question
+        self.answer = answer
+        self.choices = choices
 
-characters = ["George Washington", "Abraham Lincoln", "Martin Luther King Jr.", "Rosa Parks", "Elizabeth Cady Stanton"]
+q1 = Question("Which item was used for entertainment and news during World War 1?", "c. radio", ["a. telephone", "b. hammer", "c. radio"])
+q2 = Question("Who wrote about the importance of the navy?", "c. Alfred Thayer Mahan", ["a. Susan B. Anthony", "b. Mark Twain", "c. Alfred Thayer Mahan"])
+q3 = Question("Who came up with the New Deal plan?", "a. Franklin D. Roosevelt", ["a. Franklin D Roosevelt  b. Theodore Roosevelt  c. Thurman Arnold"])
+q4 = Question("Which was NOT a part of the New Deal?", "c. Free Silver", ["a. National Recovery Administration",  "b.Agricultural Adjustment Act",  "c. Free Silver"])
+q5 = Question("Who was NOT a part of the Big 4 in the League of Nations?", "d. Herbert Hoover", ["a. David Lloyd George", "b. Vittorio Emanuele Orlando", "c. Georges Clemenceau", "d. Herbert Hoover", "e. Woodrow Wilson"])
+q6 = Question("Who founded and was the president of the environmental association known as the Sierra Club?", "b. John Muir", ["a. Woodrow Wilson", "b. John Muir", "c. Theodore Roosevelt"])
+#q7 = Question()
+#q8 = Question()
+#q9 = Question()
+#q10= Question()
 
-colors = [("Red", "Laws"), ("Green", "People"), ("Blue", "Technology"), ("Purple", "Events")]
+questions = [q1, q2, q3, q4, q5, q6]
+#questions = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10]
 
-dice_roll = random.choice(colors) #mimics dice roll
-input(f"You rolled {dice_roll[0]}, which is the {dice_roll[1]} category!")
+current_question = questions.pop(0)
 
-red_questions = [("Which was NOT a part of the New Deal?", "a. National Recovery Administration  b.Agricultural Adjustment Act  c. Free Silver"),]
+#for x in range whatever just to run through the determining whether or not its right mechanism
 
-green_questions = [("Who came up with the New Deal plan?", "a. Franklin D Roosevelt  b. Theodore Roosevelt  c. Thurman Arnold"),
-("Who wrote about the importance of the navy?", "a. Susan B. Anthony", "b. Mark Twain", "c. Alfred Thayer Mahan"), ]
+print(f"Question: {current_question.question}")
+print(f"Choices: {current_question.choices}")
+user_answer = input("What is your answer?")
 
-blue_questions = [("What was the largest public works project as of 1880?", "a. ____" "b. TVA")]
+if user_answer != current_question.choices:
+  input("That is not one of the answer choices. Please try again.")
+elif user_answer == current_question.answer:
+  score += 1
+  print("You got it right and have earned a point!")
+else:
+  print("Good try, but not quite!")
 
-purple_questions = [()]
-
-if dice_roll[0] == "Red":
-  random.choice(red_questions[0])
-  print(red_questions[1])
-
-#class Cards:
-  #def __init__ (self, )
+print(f"Answer: {current_question.answer}")
